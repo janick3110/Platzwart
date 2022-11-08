@@ -61,6 +61,7 @@
     <Compile Include="Spielermodul.Designer.cs">
       <DependentUpon>Spielermodul.cs</DependentUpon>
     </Compile>
+    <Compile Include="Storage.cs" />
     <Compile Include="XMLParser.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

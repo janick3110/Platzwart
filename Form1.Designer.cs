@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace Vereinsmanager
 {
     partial class Form1
     {

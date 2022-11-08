@@ -4,19 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace Vereinsmanager
 {
     public class Spieler
     {
         private string firstname;
         private string lastname;
-        private string street;
-        private int houseNumber;
+        private string address;
         private string city;
         private string telephone;
         private string email;
         private DateTime birthday;
         private string team;
+
+        public string Team { get => team; set => team = value; }
+        public DateTime Birthday { get => birthday; set => birthday = value; }
+        public string Email { get => email; set => email = value; }
+        public string Telephone { get => telephone; set => telephone = value; }
+        public string City { get => city; set => city = value; }
+        public string Address { get => address; set => address = value; }
+        public string Lastname { get => lastname; set => lastname = value; }
+        public string Firstname { get => firstname; set => firstname = value; }
+
+        public Spieler(string team, 
+            DateTime birthday, 
+            string email, string 
+            telephone, string city,
+            string address, 
+            string lastname, 
+            string firstname)
+        {
+            Team = team;
+            Birthday = birthday;
+            Email = email;
+            Telephone = telephone;
+            City = city;
+            Address = address;
+            Lastname = lastname;
+            Firstname = firstname;
+        }
     }
 
 }
