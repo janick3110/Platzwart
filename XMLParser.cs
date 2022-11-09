@@ -47,7 +47,10 @@ namespace Vereinsmanager
             XmlElement activeStatus = doc.CreateElement("Active");
             activeStatus.InnerText = player.IsActive.ToString();
 
+            XmlElement id = doc.CreateElement("id");
+            id.InnerText = player.Id.ToString();    
             //Add the node to the document.
+            spieler.AppendChild(id);
             spieler.AppendChild(firstname);
             spieler.AppendChild(lastname);
             spieler.AppendChild(birthday);
@@ -76,23 +79,69 @@ namespace Vereinsmanager
             foreach (XmlNode player in aktuelleSpieler)
             {
                 XmlNodeList attributes = player.ChildNodes;
+                int.TryParse(attributes[0].InnerText, out int id);
                 Spieler spielendePerson = new Spieler(
                     jugendBez,
-                    Convert.ToDateTime(attributes[2].InnerText),
+                    Convert.ToDateTime(attributes[3].InnerText),
+                    attributes[7].InnerText,
                     attributes[6].InnerText,
                     attributes[5].InnerText,
                     attributes[4].InnerText,
-                    attributes[3].InnerText,
+                    attributes[2].InnerText,
                     attributes[1].InnerText,
-                    attributes[0].InnerText,
-                    attributes[7].InnerText.Equals("true")
-                    );
+                    attributes[8].InnerText.Equals("True"),
+                    id
+                    ) ;
                 spieler.Add(spielendePerson);
             }
 
 
 
             return spieler;
+        }
+
+        public void DeleteNode(string path, string jugendBez)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlNodeList nodes = doc.SelectNodes("//Setting[@name='File1']");
+            string nodePath = "//" + jugendBez + "/player";
+
+
+            for (int i = nodes.Count - 1; i >= 0; i--)
+            {
+                nodes[i].ParentNode.RemoveChild(nodes[i]);
+            }
+            doc.Save(path);
+        }
+
+
+        public int GetHighestID(string pathToDocument)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(pathToDocument);
+
+            XmlElement root = doc.DocumentElement;
+            string path = "//" + "maxID";
+            XmlNode xmlNode = root.SelectSingleNode(path);
+
+            int.TryParse(xmlNode.InnerText, out int id);
+            return id;
+        }
+
+
+        public void SetHighestID(string pathToDocument)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(pathToDocument);
+
+            XmlElement root = doc.DocumentElement;
+            string path = "//" + "maxID";
+            XmlNode xmlNode = root.SelectSingleNode(path);
+
+            xmlNode.InnerText = (GetHighestID(pathToDocument) + 1).ToString();
+
+            doc.Save(pathToDocument);
         }
     }
 }

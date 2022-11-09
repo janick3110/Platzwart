@@ -33,14 +33,15 @@ namespace Vereinsmanager
                             dtpBirthday.Value,
                             tbMail.Text,
                             tbTelephone.Text,
-                            (tbStreet.Text + " " + nudHouseNumber.Value),
                             (nudZipCode.Value + " " + tbCity.Text),
+                            (tbStreet.Text + " " + nudHouseNumber.Value),
                             tbLastname.Text,
                             tbFirstname.Text,
-                            cbActive.Checked
+                            cbActive.Checked,
+                            xmlParser.GetHighestID(Storage.players)
                 ) ;
 
-
+            xmlParser.SetHighestID(Storage.players);
             xmlParser.AddPlayer(Storage.players,spieler);
             UpdateUI(cbTeam.SelectedItem.ToString());
         }
@@ -73,9 +74,17 @@ namespace Vereinsmanager
 
         private void dgvPlayers_SelectionChanged(object sender, EventArgs e)
         {
+            int index = dgvPlayers.CurrentCell.RowIndex;
             List<Spieler> spieler = xmlParser.GetSpielers(Storage.players, cbJugendSelector.SelectedItem.ToString());
 
-            int index = dgvPlayers.CurrentCell.RowIndex;
+            if (spieler.Count < 1)
+            {
+                return;
+            }
+
+           
+
+            
 
             currentSelectedPlayer = spieler[index];
 
