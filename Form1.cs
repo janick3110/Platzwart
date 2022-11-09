@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace Vereinsmanager
 {
@@ -17,8 +18,7 @@ namespace Vereinsmanager
         {
             InitializeComponent();
             LoadDataFiles();
-
-
+            Encryption.DoEncryption("Hallo Welt!");
             
             
         }
