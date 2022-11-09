@@ -16,6 +16,7 @@ namespace Vereinsmanager
         private string email;
         private DateTime birthday;
         private string team;
+        private bool isActive;
 
         public string Team { get => team; set => team = value; }
         public DateTime Birthday { get => birthday; set => birthday = value; }
@@ -25,6 +26,7 @@ namespace Vereinsmanager
         public string Address { get => address; set => address = value; }
         public string Lastname { get => lastname; set => lastname = value; }
         public string Firstname { get => firstname; set => firstname = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
 
         public Spieler(string team, 
             DateTime birthday, 
@@ -32,7 +34,8 @@ namespace Vereinsmanager
             telephone, string city,
             string address, 
             string lastname, 
-            string firstname)
+            string firstname,
+            bool isActive)
         {
             Team = team;
             Birthday = birthday;
@@ -42,6 +45,7 @@ namespace Vereinsmanager
             Address = address;
             Lastname = lastname;
             Firstname = firstname;
+            IsActive = isActive;
         }
     }
 

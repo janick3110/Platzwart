@@ -44,6 +44,8 @@ namespace Vereinsmanager
             address.InnerText = player.Address.ToString();
             XmlElement city = doc.CreateElement("City");
             city.InnerText = player.City.ToString();
+            XmlElement activeStatus = doc.CreateElement("Active");
+            activeStatus.InnerText = player.IsActive.ToString();
 
             //Add the node to the document.
             spieler.AppendChild(firstname);
@@ -53,7 +55,7 @@ namespace Vereinsmanager
             spieler.AppendChild(city);
             spieler.AppendChild(telephone);
             spieler.AppendChild(email);
-
+            spieler.AppendChild(activeStatus);
 
             doc.Save(pathToDocument);
         }
@@ -82,7 +84,8 @@ namespace Vereinsmanager
                     attributes[4].InnerText,
                     attributes[3].InnerText,
                     attributes[1].InnerText,
-                    attributes[0].InnerText
+                    attributes[0].InnerText,
+                    attributes[7].InnerText.Equals("true")
                     );
                 spieler.Add(spielendePerson);
             }

@@ -16,6 +16,8 @@ namespace Vereinsmanager
     {
         private XMLParser xmlParser;
         private Storage storage;
+
+        private Spieler currentSelectedPlayer;
         public Spielermodul()
         {
             InitializeComponent();
@@ -31,11 +33,12 @@ namespace Vereinsmanager
                             dtpBirthday.Value,
                             tbMail.Text,
                             tbTelephone.Text,
-                            (tbZipCode.Text + " " + tbStreet.Text),
-                            (tbStreet.Text + " " + tbSHouseNumber.Text),
+                            (tbStreet.Text + " " + nudHouseNumber.Value),
+                            (nudZipCode.Value + " " + tbCity.Text),
                             tbLastname.Text,
-                            tbFirstname.Text
-                );
+                            tbFirstname.Text,
+                            cbActive.Checked
+                ) ;
 
 
             xmlParser.AddPlayer(Storage.players,spieler);
@@ -59,6 +62,7 @@ namespace Vereinsmanager
                 dgvPlayers.Rows[index].Cells["Telefonnummer"].Value = item.Telephone;
                 dgvPlayers.Rows[index].Cells["Email"].Value = item.Email;
                 dgvPlayers.Rows[index].Cells["Geburtstag"].Value = item.Birthday.ToShortDateString();
+                dgvPlayers.Rows[index].Cells["Aktiv"].Value = item.IsActive;
             }          
         }
 
@@ -69,7 +73,26 @@ namespace Vereinsmanager
 
         private void dgvPlayers_SelectionChanged(object sender, EventArgs e)
         {
-            
+            List<Spieler> spieler = xmlParser.GetSpielers(Storage.players, cbJugendSelector.SelectedItem.ToString());
+
+            int index = dgvPlayers.CurrentCell.RowIndex;
+
+            currentSelectedPlayer = spieler[index];
+
+            tbCity.Text = currentSelectedPlayer.City;
+            tbFirstname.Text = currentSelectedPlayer.Firstname;
+            tbLastname.Text = currentSelectedPlayer.Lastname;
+            tbMail.Text = currentSelectedPlayer.Email;
+            tbTelephone.Text = currentSelectedPlayer.Telephone;
+            tbStreet.Text = currentSelectedPlayer.Address.Remove(currentSelectedPlayer.Address.LastIndexOf(" "));
+            int.TryParse(currentSelectedPlayer.Address.Substring(currentSelectedPlayer.Address.LastIndexOf(" ")), out int houseNumber);
+            nudHouseNumber.Value = houseNumber;
+            tbCity.Text = currentSelectedPlayer.City.Substring(currentSelectedPlayer.City.IndexOf(" ") + 1, currentSelectedPlayer.City.Length - currentSelectedPlayer.City.IndexOf(" ") - 1);
+            int.TryParse(currentSelectedPlayer.City.Substring(0, currentSelectedPlayer.City.IndexOf(" ")), out int zipCode);
+            nudZipCode.Value = zipCode;
+            cbActive.Checked = currentSelectedPlayer.IsActive;
+            dtpBirthday.Value = currentSelectedPlayer.Birthday;
+            cbTeam.SelectedItem = cbJugendSelector.SelectedItem;
         }
     }
  }
