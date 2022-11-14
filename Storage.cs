@@ -14,7 +14,7 @@ namespace Vereinsmanager
 
         public Storage()
         {
-            players = Path.Combine(Environment.CurrentDirectory, @".Data\spielerliste.xml");
+            players = Path.Combine(Environment.CurrentDirectory, @".Data\spielerliste.dat");
         }
     }
 }

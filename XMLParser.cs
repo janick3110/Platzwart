@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
+
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Xml;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using WindowsFormsApp1;
+
+
 
 namespace Vereinsmanager
 {
@@ -15,11 +16,8 @@ namespace Vereinsmanager
     {
         public void AddPlayer(string pathToDocument, Spieler player)
         {
-            XmlDocument doc = new XmlDocument();
 
-            
-
-            doc.Load(pathToDocument);
+            XmlDocument doc = LoadDocument(pathToDocument);
 
             XmlElement root = doc.DocumentElement;
             string path = "//" + player.Team;
@@ -60,14 +58,13 @@ namespace Vereinsmanager
             spieler.AppendChild(email);
             spieler.AppendChild(activeStatus);
 
-            doc.Save(pathToDocument);
+            SaveDocument(pathToDocument, doc.InnerXml);
         }
 
 
         public List<Spieler> GetSpielers(string pathToDocument, string jugendBez)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(pathToDocument);
+            XmlDocument doc = LoadDocument(pathToDocument);
 
 
             List<Spieler> spieler = new List<Spieler>();
@@ -102,8 +99,7 @@ namespace Vereinsmanager
 
         public void DeleteNode(string path, string jugendBez)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
+            XmlDocument doc = LoadDocument(path);
             XmlNodeList nodes = doc.SelectNodes("//Setting[@name='File1']");
             string nodePath = "//" + jugendBez + "/player";
 
@@ -112,14 +108,13 @@ namespace Vereinsmanager
             {
                 nodes[i].ParentNode.RemoveChild(nodes[i]);
             }
-            doc.Save(path);
+            SaveDocument(path, doc.InnerXml);
         }
 
 
         public int GetHighestID(string pathToDocument)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(pathToDocument);
+            XmlDocument doc = LoadDocument(pathToDocument);
 
             XmlElement root = doc.DocumentElement;
             string path = "//" + "maxID";
@@ -132,8 +127,7 @@ namespace Vereinsmanager
 
         public void SetHighestID(string pathToDocument)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(pathToDocument);
+            XmlDocument doc = LoadDocument(pathToDocument);
 
             XmlElement root = doc.DocumentElement;
             string path = "//" + "maxID";
@@ -141,7 +135,23 @@ namespace Vereinsmanager
 
             xmlNode.InnerText = (GetHighestID(pathToDocument) + 1).ToString();
 
-            doc.Save(pathToDocument);
+            SaveDocument(pathToDocument, doc.InnerXml);
+        }
+
+        public XmlDocument LoadDocument(string pathToDocument)
+        {
+            string text = File.ReadAllText(pathToDocument, Encoding.UTF8);
+            text = Encryption.DoDecryption(text);
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(text);
+            return doc;
+        }
+
+        public void SaveDocument(string pathToDocument, string content)
+        {
+            content = Encryption.DoEncryption(content);
+            File.WriteAllText(pathToDocument, content);
+
         }
     }
 }

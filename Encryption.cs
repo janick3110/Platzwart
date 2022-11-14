@@ -11,19 +11,19 @@ namespace WindowsFormsApp1
     public class Encryption
     {
         private static int chunkSize = 8;
-        private static int keySize = 8;
+        private static int keySize = 1024;
 
         private static char[,] encryptor = new char[16,16];
 
         #region Entry Points
-        public static void DoEncryption(string text)
+        public static string DoEncryption(string text)
         {
             GenerateEncryptor();
-            Encrypt(text);
+            return Encrypt(text);
 
         }
 
-        public static void DoDecryption(string text)
+        public static string DoDecryption(string text)
         {
             GenerateEncryptor();
             var settings = ReadSettings(text);
@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
             var chunks = GenerateDecryptionChunks(text, settings[0], settings[1]);
             string decrypted = Decrypt(chunks, settings[1], settings[2]);
             Console.Write(decrypted);
+            return decrypted;   
         }
         #endregion
 
@@ -49,7 +50,7 @@ namespace WindowsFormsApp1
             return key;
         }
 
-        private static void Encrypt(string text)
+        private static string Encrypt(string text)
         {
             double chunks = text.Length / (double)chunkSize;
             int differenceInCharacters = (int)((1 - (chunks - Math.Truncate(chunks))) * chunkSize);
@@ -67,6 +68,7 @@ namespace WindowsFormsApp1
                 encryptedText += key + EncryptStringSegment(segment);
             }
             Console.WriteLine(encryptedText);
+            return encryptedText;
         }
 
         private static string AddRatTail(string text, int length)
