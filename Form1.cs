@@ -19,7 +19,7 @@ namespace Vereinsmanager
             InitializeComponent();
             LoadDataFiles();
             Encryption.DoEncryption("Hallo Welt!");
-            
+            Encryption.DoDecryption("2FF881FF5011213130604060905080602061206120615020004070605011213130604060906120704020102041205151315140707");
             
         }
 
