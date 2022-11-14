@@ -33,13 +33,14 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(4, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(256, 44);
             this.button1.TabIndex = 0;
@@ -50,7 +51,7 @@
             // btnSpielstaette
             // 
             this.btnSpielstaette.Enabled = false;
-            this.btnSpielstaette.Location = new System.Drawing.Point(268, 4);
+            this.btnSpielstaette.Location = new System.Drawing.Point(532, 4);
             this.btnSpielstaette.Margin = new System.Windows.Forms.Padding(4);
             this.btnSpielstaette.Name = "btnSpielstaette";
             this.btnSpielstaette.Size = new System.Drawing.Size(256, 44);
@@ -61,6 +62,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.btnSpielstaette);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 95);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -86,6 +88,17 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "v0.0";
             // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(268, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(256, 44);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "TrainerInnen-Verwaltung";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -94,7 +107,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -110,6 +123,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
     }
 }
 
