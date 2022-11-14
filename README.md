@@ -1,1 +1,7 @@
-# WindowsFormsApp1
+# Platzwart (aktuelle Version: v0.0)
+Diese Software soll insbesondere Jugendleitern und Jugendleiterinnen von Fußballmannschaften helfen, die Übersicht zu behalten und die Mannschaften zu verwalten. 
+Die Software hat folgenden Funktionsumfang bzw. folgende Funktionen sind geplant: 
+* Mannschaftsverwaltung: Übersicht über alle Daten der Spieler mit der Funktion Spieler und Spielerinnen anzulegen, zu bearbeiten oder zu löschen (v1.0)
+* Spielstättenverwaltung: Übersicht über die aktuellen Trainingszeiten und Spielstättenbelegung (v2.0)
+
+Alle Daten, die gespeichert werden, sind verschlüsselt, so dass ein Lesen von Daten ohne die Software nicht möglich ist.
