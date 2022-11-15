@@ -30,7 +30,6 @@
         {
             this.cbJugendSelector = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dgvPlayers = new System.Windows.Forms.DataGridView();
             this.lblVorname = new System.Windows.Forms.Label();
             this.tbFirstname = new System.Windows.Forms.TextBox();
             this.lNachname = new System.Windows.Forms.Label();
@@ -40,22 +39,23 @@
             this.lStreet = new System.Windows.Forms.Label();
             this.tbStreet = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.nudHouseNumber = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.tbCity = new System.Windows.Forms.TextBox();
-            this.nudHouseNumber = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.nudZipCode = new System.Windows.Forms.NumericUpDown();
-            this.tbTelephone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tbTelephone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbMail = new System.Windows.Forms.TextBox();
-            this.cbTeam = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbTeam = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbActive = new System.Windows.Forms.CheckBox();
             this.btnCreatePlayer = new System.Windows.Forms.Button();
             this.btnEditPlayer = new System.Windows.Forms.Button();
             this.btnDeletePlayer = new System.Windows.Forms.Button();
+            this.dgvPlayers = new System.Windows.Forms.DataGridView();
             this.Aktiv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nachname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,9 +65,9 @@
             this.Telefonnummer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZipCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             this.SuspendLayout();
             // 
             // cbJugendSelector
@@ -121,28 +121,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(306, 542);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // dgvPlayers
-            // 
-            this.dgvPlayers.AllowUserToAddRows = false;
-            this.dgvPlayers.AllowUserToDeleteRows = false;
-            this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Aktiv,
-            this.Vorname,
-            this.Nachname,
-            this.Geburtstag,
-            this.Strasse,
-            this.Ort,
-            this.Telefonnummer,
-            this.EMail});
-            this.dgvPlayers.Location = new System.Drawing.Point(326, 13);
-            this.dgvPlayers.Name = "dgvPlayers";
-            this.dgvPlayers.ReadOnly = true;
-            this.dgvPlayers.RowHeadersWidth = 20;
-            this.dgvPlayers.Size = new System.Drawing.Size(558, 570);
-            this.dgvPlayers.TabIndex = 2;
-            this.dgvPlayers.SelectionChanged += new System.EventHandler(this.dgvPlayers_SelectionChanged);
             // 
             // lblVorname
             // 
@@ -217,22 +195,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Hausnummer";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 195);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Ort";
-            // 
-            // tbCity
-            // 
-            this.tbCity.Location = new System.Drawing.Point(3, 211);
-            this.tbCity.Name = "tbCity";
-            this.tbCity.Size = new System.Drawing.Size(296, 20);
-            this.tbCity.TabIndex = 11;
-            // 
             // nudHouseNumber
             // 
             this.nudHouseNumber.Location = new System.Drawing.Point(3, 172);
@@ -254,6 +216,22 @@
             0,
             0,
             0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Ort";
+            // 
+            // tbCity
+            // 
+            this.tbCity.Location = new System.Drawing.Point(3, 211);
+            this.tbCity.Name = "tbCity";
+            this.tbCity.Size = new System.Drawing.Size(296, 20);
+            this.tbCity.TabIndex = 11;
             // 
             // label3
             // 
@@ -286,13 +264,6 @@
             0,
             0});
             // 
-            // tbTelephone
-            // 
-            this.tbTelephone.Location = new System.Drawing.Point(3, 289);
-            this.tbTelephone.Name = "tbTelephone";
-            this.tbTelephone.Size = new System.Drawing.Size(296, 20);
-            this.tbTelephone.TabIndex = 15;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -301,6 +272,13 @@
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "Telefon";
+            // 
+            // tbTelephone
+            // 
+            this.tbTelephone.Location = new System.Drawing.Point(3, 289);
+            this.tbTelephone.Name = "tbTelephone";
+            this.tbTelephone.Size = new System.Drawing.Size(296, 20);
+            this.tbTelephone.TabIndex = 15;
             // 
             // label5
             // 
@@ -318,6 +296,15 @@
             this.tbMail.Size = new System.Drawing.Size(296, 20);
             this.tbMail.TabIndex = 18;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 351);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Jugend";
+            // 
             // cbTeam
             // 
             this.cbTeam.FormattingEnabled = true;
@@ -334,15 +321,6 @@
             this.cbTeam.Name = "cbTeam";
             this.cbTeam.Size = new System.Drawing.Size(296, 21);
             this.cbTeam.TabIndex = 19;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 351);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Jugend";
             // 
             // label7
             // 
@@ -381,6 +359,7 @@
             this.btnEditPlayer.TabIndex = 24;
             this.btnEditPlayer.Text = "Spieler ändern";
             this.btnEditPlayer.UseVisualStyleBackColor = true;
+            this.btnEditPlayer.Click += new System.EventHandler(this.btnEditPlayer_Click);
             // 
             // btnDeletePlayer
             // 
@@ -390,6 +369,29 @@
             this.btnDeletePlayer.TabIndex = 25;
             this.btnDeletePlayer.Text = "Spieler löschen";
             this.btnDeletePlayer.UseVisualStyleBackColor = true;
+            this.btnDeletePlayer.Click += new System.EventHandler(this.btnDeletePlayer_Click);
+            // 
+            // dgvPlayers
+            // 
+            this.dgvPlayers.AllowUserToAddRows = false;
+            this.dgvPlayers.AllowUserToDeleteRows = false;
+            this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Aktiv,
+            this.Vorname,
+            this.Nachname,
+            this.Geburtstag,
+            this.Strasse,
+            this.Ort,
+            this.Telefonnummer,
+            this.EMail});
+            this.dgvPlayers.Location = new System.Drawing.Point(326, 13);
+            this.dgvPlayers.Name = "dgvPlayers";
+            this.dgvPlayers.ReadOnly = true;
+            this.dgvPlayers.RowHeadersWidth = 20;
+            this.dgvPlayers.Size = new System.Drawing.Size(558, 570);
+            this.dgvPlayers.TabIndex = 2;
+            this.dgvPlayers.SelectionChanged += new System.EventHandler(this.dgvPlayers_SelectionChanged);
             // 
             // Aktiv
             // 
@@ -467,9 +469,9 @@
             this.Text = "Spielermodul";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZipCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
             this.ResumeLayout(false);
 
         }
