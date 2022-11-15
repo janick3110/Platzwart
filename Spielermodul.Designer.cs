@@ -64,6 +64,7 @@
             this.Ort = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefonnummer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAutoImport = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZipCode)).BeginInit();
@@ -116,10 +117,11 @@
             this.flowLayoutPanel1.Controls.Add(this.btnCreatePlayer);
             this.flowLayoutPanel1.Controls.Add(this.btnEditPlayer);
             this.flowLayoutPanel1.Controls.Add(this.btnDeletePlayer);
+            this.flowLayoutPanel1.Controls.Add(this.btnAutoImport);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 41);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(306, 542);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(306, 550);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // lblVorname
@@ -389,7 +391,7 @@
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersWidth = 20;
-            this.dgvPlayers.Size = new System.Drawing.Size(558, 570);
+            this.dgvPlayers.Size = new System.Drawing.Size(558, 578);
             this.dgvPlayers.TabIndex = 2;
             this.dgvPlayers.SelectionChanged += new System.EventHandler(this.dgvPlayers_SelectionChanged);
             // 
@@ -457,11 +459,21 @@
             this.EMail.ReadOnly = true;
             this.EMail.Width = 125;
             // 
+            // btnAutoImport
+            // 
+            this.btnAutoImport.Location = new System.Drawing.Point(3, 517);
+            this.btnAutoImport.Name = "btnAutoImport";
+            this.btnAutoImport.Size = new System.Drawing.Size(296, 23);
+            this.btnAutoImport.TabIndex = 26;
+            this.btnAutoImport.Text = "AutoImport DFBnet";
+            this.btnAutoImport.UseVisualStyleBackColor = true;
+            this.btnAutoImport.Click += new System.EventHandler(this.btnAutoImport_Click);
+            // 
             // Spielermodul
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 595);
+            this.ClientSize = new System.Drawing.Size(896, 602);
             this.Controls.Add(this.dgvPlayers);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.cbJugendSelector);
@@ -514,5 +526,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefonnummer;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMail;
+        private System.Windows.Forms.Button btnAutoImport;
     }
 }

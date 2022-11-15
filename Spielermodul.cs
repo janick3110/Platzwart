@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml;
+using System.IO;
 
 namespace Vereinsmanager
 {
@@ -131,6 +132,110 @@ namespace Vereinsmanager
             xmlParser.DeleteNode(Storage.players, cbJugendSelector.SelectedItem.ToString(), currentSelectedPlayer);
             xmlParser.AddPlayer(Storage.players, spieler);
             UpdateUI(cbTeam.SelectedItem.ToString());
+        }
+
+        private void btnAutoImport_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "CSV files (*.csv)|*.csv";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        List<string> firstname = new List<string>();
+                        List<string> lastname = new List<string>();
+                        List<string> team = new List<string>();
+                        List<DateTime> birthday = new List<DateTime>();
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+                            var values = line.Split(';');
+
+                            if (values.Length < 3 || line.Contains("Passnr."))
+                            {
+                                continue;
+                            }
+
+                            firstname.Add(values[2]);
+                            lastname.Add(values[1]);
+                            team.Add(values[3]);
+                            birthday.Add(DateTime.Parse(values[4]));
+                        }
+
+
+                        for (int i = 0; i < firstname.Count; i++)
+                        {
+                            Spieler spieler = new Spieler(
+                                GetTeam(team[i]),
+                                birthday[i],
+                                "-",
+                                "-",
+                                "1 -",
+                                "- 1",
+                                lastname[i],
+                                firstname[i],
+                                true,
+                                xmlParser.GetHighestID(Storage.players));
+
+                        }
+
+
+
+
+                    }
+                }
+            }
+
+        }
+
+        private string GetTeam(string DFBnetName)
+        {
+            if (DFBnetName.Contains("G-Junior"))
+            {
+                return "Bambini";
+            }
+            else if (DFBnetName.Contains("F-Junior"))
+            {
+                return "F-Jugend";
+            }
+            else if (DFBnetName.Contains("E-Junior"))
+            {
+                return "E-Junioren";
+            } 
+            else if (DFBnetName.Contains("D-Junior"))
+            {
+                return "D-Junioren";
+            } 
+            else if (DFBnetName.Contains("C-Junior"))
+            {
+                return "C-Junioren";
+            }
+            else if (DFBnetName.Contains("B-Junior"))
+            {
+                return "B-Junioren";
+            }
+            else if (DFBnetName.Contains("A-Junior"))
+            {
+                return "A-Junioren";
+            }
+            else
+            {
+                return "Archiv";
+            }
         }
     }
  }

@@ -10,7 +10,7 @@ using System.Xml.Linq;
 using WindowsFormsApp1;
 using System.Collections;
 using System.Linq;
-
+using System.Drawing;
 
 namespace Vereinsmanager
 {
@@ -137,6 +137,30 @@ namespace Vereinsmanager
 
             int.TryParse(xmlNode.InnerText, out int id);
             return id;
+        }
+
+        public bool CheckIfObjectExists(string pathToDocument, Spieler spieler)
+        {
+            XmlDocument doc = LoadDocument(pathToDocument);
+
+            string nodePath = "//";
+            XmlNodeList jugenden = doc.SelectNodes(nodePath);
+
+            foreach (XmlNodeList nodes in jugenden)
+            {
+                XmlNodeList players = doc.SelectNodes(nodePath + nodes);
+                foreach (XmlNode node in players)
+                {
+                    if (node["Firstname"].InnerText == spieler.Firstname
+                        && node["Lastname"].InnerText == spieler.Lastname
+                        && node["Birthday"].InnerText == spieler.Birthday.ToString())
+                    {
+                        return true;
+                    }
+                }
+                
+            }
+            return false;
         }
 
 
