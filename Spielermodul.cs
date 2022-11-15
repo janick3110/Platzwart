@@ -15,21 +15,39 @@ namespace Vereinsmanager
 {
     public partial class Spielermodul : Form
     {
-        private XMLParser xmlParser;
-        private Storage storage;
+        private XMLParser xmlParser = new XMLParser();
 
-        private Spieler currentSelectedPlayer;
+        private Player currentSelectedPlayer;
         public Spielermodul()
         {
             InitializeComponent();
-            xmlParser = new XMLParser();
-            storage = new Storage();
-            Console.WriteLine(xmlParser.ToString());
+            new Storage();
         }
+
+        private void CreatePlayer(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeletePlayer(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditPlayer(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImportDFBnetEntries(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void btnCreatePlayer_Click(object sender, EventArgs e)
         {
-            Spieler spieler = new Spieler(
+            Player spieler = new Player(
                             cbTeam.SelectedItem.ToString(),
                             dtpBirthday.Value,
                             tbMail.Text,
@@ -50,7 +68,7 @@ namespace Vereinsmanager
 
         private void UpdateUI(string jugendBez)
         {
-            List<Spieler> spieler = xmlParser.GetSpielers(Storage.players,jugendBez);
+            List<Player> spieler = xmlParser.GetSpielers(Storage.players,jugendBez);
 
             dgvPlayers.Rows.Clear();
             foreach (var item in spieler)
@@ -76,7 +94,7 @@ namespace Vereinsmanager
         private void dgvPlayers_SelectionChanged(object sender, EventArgs e)
         {
             int index = dgvPlayers.CurrentCell.RowIndex;
-            List<Spieler> spieler = xmlParser.GetSpielers(Storage.players, cbJugendSelector.SelectedItem.ToString());
+            List<Player> spieler = xmlParser.GetSpielers(Storage.players, cbJugendSelector.SelectedItem.ToString());
 
             if (spieler.Count < 1)
             {
@@ -116,7 +134,7 @@ namespace Vereinsmanager
 
         private void btnEditPlayer_Click(object sender, EventArgs e)
         {
-            Spieler spieler = new Spieler(
+            Player spieler = new Player(
                             cbTeam.SelectedItem.ToString(),
                             dtpBirthday.Value,
                             tbMail.Text,
@@ -179,7 +197,7 @@ namespace Vereinsmanager
 
                         for (int i = 0; i < 20; i++)
                         {
-                            Spieler spieler = new Spieler(
+                            Player spieler = new Player(
                                 GetTeam(team[i]),
                                 birthday[i],
                                 "-",

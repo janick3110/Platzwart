@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vereinsmanager
 {
-    public class Spieler
+    public class Player
     {
         private string firstname;
         private string lastname;
@@ -30,7 +30,7 @@ namespace Vereinsmanager
         public bool IsActive { get => isActive; set => isActive = value; }
         public int Id { get => id; set => id = value; }
 
-        public Spieler(string team, 
+        public Player(string team, 
             DateTime birthday, 
             string email, string 
             telephone, string city,

@@ -16,7 +16,7 @@ namespace Vereinsmanager
 {
     public class XMLParser
     {
-        public void AddPlayer(string pathToDocument, Spieler player)
+        public void AddPlayer(string pathToDocument, Player player)
         {
 
             XmlDocument doc = LoadDocument(pathToDocument);
@@ -64,12 +64,12 @@ namespace Vereinsmanager
         }
 
 
-        public List<Spieler> GetSpielers(string pathToDocument, string jugendBez)
+        public List<Player> GetSpielers(string pathToDocument, string jugendBez)
         {
             XmlDocument doc = LoadDocument(pathToDocument);
 
 
-            List<Spieler> spieler = new List<Spieler>();
+            List<Player> spieler = new List<Player>();
 
             XmlElement root = doc.DocumentElement;
             string path = "//" + jugendBez + "/player";
@@ -79,7 +79,7 @@ namespace Vereinsmanager
             {
                 XmlNodeList attributes = player.ChildNodes;
                 int.TryParse(attributes[0].InnerText, out int id);
-                Spieler spielendePerson = new Spieler(
+                Player spielendePerson = new Player(
                     jugendBez,
                     Convert.ToDateTime(attributes[3].InnerText),
                     attributes[7].InnerText,
@@ -99,7 +99,7 @@ namespace Vereinsmanager
             return spieler;
         }
 
-        public void DeleteNode(string path, string jugendBez, Spieler spielerZuLoeschen)
+        public void DeleteNode(string path, string jugendBez, Player spielerZuLoeschen)
         {
             XmlDocument doc = LoadDocument(path);
             string nodePath = "//" + jugendBez + "/player";
@@ -139,7 +139,7 @@ namespace Vereinsmanager
             return id;
         }
 
-        public Spieler GetSpielerByID(string pathToDocument, int id)
+        public Player GetSpielerByID(string pathToDocument, int id)
         {
             XmlDocument doc = LoadDocument(pathToDocument);
 
@@ -154,7 +154,7 @@ namespace Vereinsmanager
                     if (node["id"].InnerText == id.ToString())
                     {
 
-                        Spieler spieler = new Spieler(
+                        Player spieler = new Player(
                             "",
                             DateTime.MinValue,
                             "-",
@@ -174,7 +174,7 @@ namespace Vereinsmanager
             return null;
         }
 
-        public int CheckIfObjectExists(string pathToDocument, Spieler spieler)
+        public int CheckIfObjectExists(string pathToDocument, Player spieler)
         {
             XmlDocument doc = LoadDocument(pathToDocument);
 
