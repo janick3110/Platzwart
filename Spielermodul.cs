@@ -141,7 +141,7 @@ namespace Vereinsmanager
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.InitialDirectory = "c:\\Documents";
                 openFileDialog.Filter = "CSV files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
@@ -175,9 +175,9 @@ namespace Vereinsmanager
                             team.Add(values[3]);
                             birthday.Add(DateTime.Parse(values[4]));
                         }
+                        Console.Write("Ended analysis");
 
-
-                        for (int i = 0; i < firstname.Count; i++)
+                        for (int i = 0; i < 20; i++)
                         {
                             Spieler spieler = new Spieler(
                                 GetTeam(team[i]),
@@ -191,8 +191,18 @@ namespace Vereinsmanager
                                 true,
                                 xmlParser.GetHighestID(Storage.players));
 
-                        }
+                            /* if (xmlParser.CheckIfObjectExists(Storage.players, spieler) > -1)
+                            {
+                                var playerXML = xmlParser.GetSpielers(Storage.players);
+                            }
+                            else
+                            {
 
+                            }*/
+                            xmlParser.AddPlayer(Storage.players, spieler);
+
+                        }
+                        
 
 
 

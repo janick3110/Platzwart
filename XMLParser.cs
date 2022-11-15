@@ -139,7 +139,42 @@ namespace Vereinsmanager
             return id;
         }
 
-        public bool CheckIfObjectExists(string pathToDocument, Spieler spieler)
+        public Spieler GetSpielerByID(string pathToDocument, int id)
+        {
+            XmlDocument doc = LoadDocument(pathToDocument);
+
+            string nodePath = "//";
+            XmlNodeList jugenden = doc.SelectNodes(nodePath);
+
+            foreach (XmlNodeList nodes in jugenden)
+            {
+                XmlNodeList players = doc.SelectNodes(nodePath + nodes);
+                foreach (XmlNode node in players)
+                {
+                    if (node["id"].InnerText == id.ToString())
+                    {
+
+                        Spieler spieler = new Spieler(
+                            "",
+                            DateTime.MinValue,
+                            "-",
+                            "-",
+                            "1 -",
+                            "- 1",
+                            "",
+                            "",
+                            true,
+                            0
+                            );
+                        return spieler;
+                    }
+                }
+
+            }
+            return null;
+        }
+
+        public int CheckIfObjectExists(string pathToDocument, Spieler spieler)
         {
             XmlDocument doc = LoadDocument(pathToDocument);
 
@@ -155,12 +190,14 @@ namespace Vereinsmanager
                         && node["Lastname"].InnerText == spieler.Lastname
                         && node["Birthday"].InnerText == spieler.Birthday.ToString())
                     {
-                        return true;
+
+                        int.TryParse(node["id"].InnerText, out int id);
+                        return id;
                     }
                 }
                 
             }
-            return false;
+            return -1;
         }
 
 
