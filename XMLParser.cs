@@ -6,8 +6,10 @@ using System.IO;
 using System.Text;
 
 using System.Xml;
+using System.Xml.Linq;
 using WindowsFormsApp1;
-
+using System.Collections;
+using System.Linq;
 
 
 namespace Vereinsmanager
@@ -97,18 +99,31 @@ namespace Vereinsmanager
             return spieler;
         }
 
-        public void DeleteNode(string path, string jugendBez)
+        public void DeleteNode(string path, string jugendBez, Spieler spielerZuLoeschen)
         {
             XmlDocument doc = LoadDocument(path);
-            XmlNodeList nodes = doc.SelectNodes("//Setting[@name='File1']");
             string nodePath = "//" + jugendBez + "/player";
+            XmlNodeList nodes = doc.SelectNodes(nodePath);
 
+            foreach (XmlNode node in nodes)
+            {
+                if (node["id"].InnerText == spielerZuLoeschen.Id.ToString())
+                {
+                    node.ParentNode.RemoveChild(node);
+                    SaveDocument(path, doc.InnerXml);
+                    return;
+                }
+            }
 
-            for (int i = nodes.Count - 1; i >= 0; i--)
+            /*for (int i = nodes.Count - 1; i >= 0; i--)
             {
                 nodes[i].ParentNode.RemoveChild(nodes[i]);
-            }
+            }*/
             SaveDocument(path, doc.InnerXml);
+
+            
+
+
         }
 
 

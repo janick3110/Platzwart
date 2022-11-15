@@ -81,7 +81,10 @@ namespace Vereinsmanager
             {
                 return;
             }
-
+            if (index >= spieler.Count)
+            {
+                index = spieler.Count - 1;
+            }
            
 
             
@@ -102,6 +105,32 @@ namespace Vereinsmanager
             cbActive.Checked = currentSelectedPlayer.IsActive;
             dtpBirthday.Value = currentSelectedPlayer.Birthday;
             cbTeam.SelectedItem = cbJugendSelector.SelectedItem;
+        }
+
+        private void btnDeletePlayer_Click(object sender, EventArgs e)
+        {
+            xmlParser.DeleteNode(Storage.players, cbTeam.SelectedItem.ToString(), currentSelectedPlayer);
+            UpdateUI(cbTeam.SelectedItem.ToString());
+        }
+
+        private void btnEditPlayer_Click(object sender, EventArgs e)
+        {
+            Spieler spieler = new Spieler(
+                            cbTeam.SelectedItem.ToString(),
+                            dtpBirthday.Value,
+                            tbMail.Text,
+                            tbTelephone.Text,
+                            (nudZipCode.Value + " " + tbCity.Text),
+                            (tbStreet.Text + " " + nudHouseNumber.Value),
+                            tbLastname.Text,
+                            tbFirstname.Text,
+                            cbActive.Checked,
+                            currentSelectedPlayer.Id
+                );
+
+            xmlParser.DeleteNode(Storage.players, cbJugendSelector.SelectedItem.ToString(), currentSelectedPlayer);
+            xmlParser.AddPlayer(Storage.players, spieler);
+            UpdateUI(cbTeam.SelectedItem.ToString());
         }
     }
  }
