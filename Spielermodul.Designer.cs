@@ -55,6 +55,7 @@
             this.btnCreatePlayer = new System.Windows.Forms.Button();
             this.btnEditPlayer = new System.Windows.Forms.Button();
             this.btnDeletePlayer = new System.Windows.Forms.Button();
+            this.btnAutoImport = new System.Windows.Forms.Button();
             this.dgvPlayers = new System.Windows.Forms.DataGridView();
             this.Aktiv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Vorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,11 +65,18 @@
             this.Ort = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefonnummer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAutoImport = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZipCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbJugendSelector
@@ -373,6 +381,16 @@
             this.btnDeletePlayer.UseVisualStyleBackColor = true;
             this.btnDeletePlayer.Click += new System.EventHandler(this.btnDeletePlayer_Click);
             // 
+            // btnAutoImport
+            // 
+            this.btnAutoImport.Location = new System.Drawing.Point(3, 517);
+            this.btnAutoImport.Name = "btnAutoImport";
+            this.btnAutoImport.Size = new System.Drawing.Size(296, 23);
+            this.btnAutoImport.TabIndex = 26;
+            this.btnAutoImport.Text = "AutoImport DFBnet";
+            this.btnAutoImport.UseVisualStyleBackColor = true;
+            this.btnAutoImport.Click += new System.EventHandler(this.btnAutoImport_Click);
+            // 
             // dgvPlayers
             // 
             this.dgvPlayers.AllowUserToAddRows = false;
@@ -459,21 +477,80 @@
             this.EMail.ReadOnly = true;
             this.EMail.Width = 125;
             // 
-            // btnAutoImport
+            // flowLayoutPanel2
             // 
-            this.btnAutoImport.Location = new System.Drawing.Point(3, 517);
-            this.btnAutoImport.Name = "btnAutoImport";
-            this.btnAutoImport.Size = new System.Drawing.Size(296, 23);
-            this.btnAutoImport.TabIndex = 26;
-            this.btnAutoImport.Text = "AutoImport DFBnet";
-            this.btnAutoImport.UseVisualStyleBackColor = true;
-            this.btnAutoImport.Click += new System.EventHandler(this.btnAutoImport_Click);
+            this.flowLayoutPanel2.Controls.Add(this.label8);
+            this.flowLayoutPanel2.Controls.Add(this.label9);
+            this.flowLayoutPanel2.Controls.Add(this.label10);
+            this.flowLayoutPanel2.Controls.Add(this.label11);
+            this.flowLayoutPanel2.Controls.Add(this.label12);
+            this.flowLayoutPanel2.Controls.Add(this.label13);
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(891, 13);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(189, 103);
+            this.flowLayoutPanel2.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 17);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Übersicht";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(141, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Anzahl SpielerInnen gesamt:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(24, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "n/a";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 43);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 13);
+            this.label11.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 56);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 13);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "davon aktiv:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 69);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(24, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "n/a";
             // 
             // Spielermodul
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 602);
+            this.ClientSize = new System.Drawing.Size(1083, 602);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.dgvPlayers);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.cbJugendSelector);
@@ -484,6 +561,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHouseNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZipCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -527,5 +606,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefonnummer;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMail;
         private System.Windows.Forms.Button btnAutoImport;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

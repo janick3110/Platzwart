@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 36);
+            this.button1.Size = new System.Drawing.Size(180, 36);
             this.button1.TabIndex = 0;
             this.button1.Text = "SpielerInnenmanagement";
             this.button1.UseVisualStyleBackColor = true;
@@ -50,9 +51,9 @@
             // btnSpielstaette
             // 
             this.btnSpielstaette.Enabled = false;
-            this.btnSpielstaette.Location = new System.Drawing.Point(399, 3);
+            this.btnSpielstaette.Location = new System.Drawing.Point(375, 3);
             this.btnSpielstaette.Name = "btnSpielstaette";
-            this.btnSpielstaette.Size = new System.Drawing.Size(192, 36);
+            this.btnSpielstaette.Size = new System.Drawing.Size(180, 36);
             this.btnSpielstaette.TabIndex = 1;
             this.btnSpielstaette.Text = "Spielstättenmanagement";
             this.btnSpielstaette.UseVisualStyleBackColor = true;
@@ -62,18 +63,19 @@
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.btnSpielstaette);
+            this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 77);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(782, 363);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(745, 363);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(201, 3);
+            this.button2.Location = new System.Drawing.Point(189, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 36);
+            this.button2.Size = new System.Drawing.Size(180, 36);
             this.button2.TabIndex = 2;
             this.button2.Text = "TrainerInnen-Verwaltung";
             this.button2.UseVisualStyleBackColor = true;
@@ -92,18 +94,28 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(763, 7);
+            this.label2.Location = new System.Drawing.Point(726, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "v1.0";
             // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(561, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(180, 36);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Inventarsverwaltung";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(765, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -123,6 +135,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

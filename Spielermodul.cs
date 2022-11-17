@@ -62,32 +62,6 @@ namespace Vereinsmanager
 
         #region Utility
 
-        private Dictionary<int, string> GenerateDictonaryEntry(int location, string value)
-        {
-            Dictionary<int, string> dictonaryEntry = new Dictionary<int, string>();
-
-            if (value != "")
-            {
-                return null;
-            }
-            else
-            {
-                dictonaryEntry.Add(location, value);
-                return dictonaryEntry;
-            }
-
-        }
-
-        private Dictionary<int, string> AddRange(Dictionary<int,string> baseDictonary, Dictionary<int,string> newValues)
-        {
-            foreach (var entry in newValues)
-            {
-                baseDictonary.Add(entry.Key, entry.Value);
-            }
-
-            return baseDictonary;
-        }
-
         private void UpdateValues()
         {
             formValues.Clear();
@@ -107,6 +81,8 @@ namespace Vereinsmanager
 
         #endregion
 
+
+        #region Old Stuff
         private void btnCreatePlayer_Click(object sender, EventArgs e)
         {
             Player spieler = new Player(
@@ -328,5 +304,7 @@ namespace Vereinsmanager
             }
         }
     }
- }
+
+    #endregion
+}
 
