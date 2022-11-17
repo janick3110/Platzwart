@@ -10,33 +10,46 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml;
 using System.IO;
+using WindowsFormsApp1;
+using System.Drawing.Text;
 
 namespace Vereinsmanager
 {
     public partial class Spielermodul : Form
     {
         private XMLParser xmlParser = new XMLParser();
+        private CSV_Parser parser;
+
+        private Dictionary<int, string> formValues = new Dictionary<int, string>();
 
         private Player currentSelectedPlayer;
         public Spielermodul()
         {
             InitializeComponent();
             new Storage();
+            parser = new CSV_Parser(Storage.players);
         }
+
+        #region Entry Points
+
 
         private void CreatePlayer(object sender, EventArgs e)
         {
-
+            UpdateValues();
+            parser.AddObject(formValues);
         }
 
         private void DeletePlayer(object sender, EventArgs e)
         {
-
+            UpdateValues();
+            parser.DeleteObject(formValues);
         }
 
         private void EditPlayer(object sender, EventArgs e)
         {
-
+            parser.DeleteObject(formValues);
+            UpdateValues();
+            parser.AddObject(formValues);
         }
 
         private void ImportDFBnetEntries(object sender, EventArgs e)
@@ -44,6 +57,55 @@ namespace Vereinsmanager
 
         }
 
+        #endregion
+
+
+        #region Utility
+
+        private Dictionary<int, string> GenerateDictonaryEntry(int location, string value)
+        {
+            Dictionary<int, string> dictonaryEntry = new Dictionary<int, string>();
+
+            if (value != "")
+            {
+                return null;
+            }
+            else
+            {
+                dictonaryEntry.Add(location, value);
+                return dictonaryEntry;
+            }
+
+        }
+
+        private Dictionary<int, string> AddRange(Dictionary<int,string> baseDictonary, Dictionary<int,string> newValues)
+        {
+            foreach (var entry in newValues)
+            {
+                baseDictonary.Add(entry.Key, entry.Value);
+            }
+
+            return baseDictonary;
+        }
+
+        private void UpdateValues()
+        {
+            formValues.Clear();
+
+            formValues.Add(1, tbLastname.Text);
+            formValues.Add(2, tbFirstname.Text);
+            formValues.Add(3, dtpBirthday.Value.ToShortDateString());
+            formValues.Add(4, cbTeam.SelectedItem.ToString());
+            formValues.Add(5, tbStreet.Text);
+            formValues.Add(6, nudHouseNumber.Value.ToString());
+            formValues.Add(7, nudZipCode.Value.ToString());
+            formValues.Add(8, tbCity.Text);
+            formValues.Add(9, tbTelephone.Text);
+            formValues.Add(10, tbMail.Text);
+            formValues.Add(11, cbActive.Checked.ToString());
+        }
+
+        #endregion
 
         private void btnCreatePlayer_Click(object sender, EventArgs e)
         {

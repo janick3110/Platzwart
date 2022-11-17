@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Drawing2D;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace WindowsFormsApp1
 {
@@ -25,21 +22,21 @@ namespace WindowsFormsApp1
 
         public void ResetCSVFile(string standardInput)
         {
-            standardInput = "id, lastname, firstname, birthday, street, house number, zip code, city, telephone, email, acive";
+            standardInput = "id, lastname, firstname, birthday, team, street, house number, zip code, city, telephone, email, active";
             SaveFile(standardInput);
         }
 
-        public void AddObject(List<string> input)
+        public void AddObject(Dictionary<int,string> input)
         {
             string content = LoadFile();
             content += "\n" + StringConcatenator(input);
             SaveFile(content);
         }
 
-        public void DeleteObject(List<string> values, List<int> columnIDs)
+        public void DeleteObject(Dictionary<int, string> values)
         {
             List<string> content = LoadFile().Split((char)10).ToList();
-            var searchString = CreateRegexSearchString(values, columnIDs);
+            var searchString = CreateRegexSearchString(values);
 
             string newFileContent = "";
 
@@ -56,10 +53,10 @@ namespace WindowsFormsApp1
 
         }
 
-        public List<string> GetObject(List<string> values, List<int> columnIDs)
+        public List<string> GetObject(Dictionary<int, string> values)
         {
             List<string> content = LoadFile().Split((char)10).ToList();
-            var searchString = CreateRegexSearchString(values, columnIDs);
+            var searchString = CreateRegexSearchString(values);
 
             foreach (string line in content)
             {
@@ -72,7 +69,7 @@ namespace WindowsFormsApp1
             return null;
         }
 
-        public void EditObject(List<string> oldValues, List<string> newValues, List<int> columnIDs)
+        public void EditObject(List<string> oldValues, Dictionary<int, string> values)
         {
             string content = LoadFile();
 
@@ -93,7 +90,7 @@ namespace WindowsFormsApp1
             File.WriteAllText(pathToDocument, Encryption.DoEncryption(content));
         }
 
-        private string StringConcatenator(List<string> content)
+        private string StringConcatenator(Dictionary<int,string> content)
         {
             string output = "";
             foreach (var item in content)
@@ -105,17 +102,17 @@ namespace WindowsFormsApp1
             return output;
         }
 
-        private string CreateRegexSearchString(List<string> values, List<int> columnIDs)
+        private string CreateRegexSearchString(Dictionary<int, string> values)
         {
             string regex = "";
-            int index = 0;
+
             for (int i = 0; i < totalColumns; i++)
             {
                 string value;
-                if (columnIDs.Contains(i))
+
+                if (values.ContainsKey(i))
                 {
-                    value = values[index] + ",";
-                    index++;
+                    values.TryGetValue(i, out value);
                 }
                 else
                 {
