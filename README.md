@@ -1,4 +1,4 @@
-# Platzwart (aktuelle Version: v0.0)
+# Platzwart (aktuelle Version: v1.0)
 Diese Software soll insbesondere Jugendleitern und Jugendleiterinnen von Fußballmannschaften helfen, die Übersicht zu behalten und die Mannschaften zu verwalten. 
 Die Software hat folgenden Funktionsumfang bzw. folgende Funktionen sind geplant: 
 * Mannschaftsverwaltung: Übersicht über alle Daten der Spieler mit der Funktion Spieler und Spielerinnen anzulegen, zu bearbeiten oder zu löschen (v1.0)
